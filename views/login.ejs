@@ -1,0 +1,50 @@
+<body class="bg-gray-300" style="font-family: Roboto;">
+    <div class="h-screen flex justify-center items-center">
+        <div class="bg-white rounded-lg w-2/5 px-16 py-16">
+            <form method="POST" action="/astronaut/login" enctype="multipart/form-data">
+                <div class="flex font-bold justify-center">
+                    <img src="https://cdn.statically.io/gh/sefyudem/Responsive-Login-Form/master/img/avatar.svg" alt=""
+                        class="h-20 w-20">
+                </div>
+                <h2 class="text-3xl text-center text-gray-700 mb-4">Login Phrase</h2>
+                <div class="input-div border-b-2 relative grid my-5 py-1 focus:outline-none"
+                    style="grid-template-columns: 7% 93%;">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Pass Phrase</h5>
+                        <input name="username" type="password" class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
+                            style="background:none;">
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full py-2 rounded-full bg-green-600 text-gray-100  focus:outline-none">Login</button>
+            </form>
+        </div>
+    </div>
+    <script nonce="1234">
+        const inputs = document.querySelectorAll("input");
+
+
+        function addcl() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+
+        function remcl() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove("focus");
+            }
+        }
+
+
+        inputs.forEach(input => {
+            input.addEventListener("focus", addcl);
+            input.addEventListener("blur", remcl);
+        });
+    </script>
+</body>
+
+</html>

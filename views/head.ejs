@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.1/tailwind-dark.min.css"
+        integrity="sha512-vqADVq626ooRaJhfw+Ug3/bM2MCHGZ63eRDnxOzWqCW1AA/E89rTUOuX3vgFVDPYCP6c+JGdyiCZnJC5EabP2A=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.1/components.min.css"
+        integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ=="
+        crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        /* Tab content - closed */
+       
+
+        .i {
+            color: #d9d9d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .i i {
+            transition: .3s;
+        }
+
+        .input-div>div {
+            position: relative;
+            height: 45px;
+        }
+
+        .input-div>div>h5 {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+            transition: .3s;
+        }
+
+        .input-div:before,
+        .input-div:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 0%;
+            height: 2px;
+            background-color: #38d39f;
+            transition: .4s;
+        }
+
+        .input-div:before {
+            right: 50%;
+        }
+
+        .input-div:after {
+            left: 50%;
+        }
+
+        .input-div.focus:before,
+        .input-div.focus:after {
+            width: 50%;
+        }
+
+        .input-div.focus>div>h5 {
+            top: -5px;
+            font-size: 15px;
+        }
+
+        .input-div.focus>.i>i {
+            color: #38d39f;
+        }
+    </style>
+</head>

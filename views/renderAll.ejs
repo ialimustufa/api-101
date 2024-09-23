@@ -1,0 +1,111 @@
+<%- include('head') -%>
+
+<body class="bg-gray-300">
+    <% var isValidUrl = function (urlString) {
+        try { 
+            return Boolean(new URL(urlString)); 
+        }
+        catch(e){ 
+            return false; 
+        }
+    } %>
+    <div class="container mt-8 mx-auto overscroll-contain">
+        <div class="grid overscroll-contain grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div class="tab w-full overscroll-contain overflow-hidden border-t">
+                <input class="absolute opacity-0 " id="tab-multi-one" type="checkbox" name="tabs">
+                <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-one">Jokes</label>
+                <div class="tab-content overscroll-contain overflow-y-auto border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+                    
+                    <% if (data.jokes.length < 4) {%>
+                        <h1>No New Data</h1>
+                    <% } else { %>
+                    <% data.jokes.forEach(joke => { %>
+                    <% if(joke) { %>
+                    <div
+                        class="card m-2 cursor-pointer shadow-s bg-gray-700 border border-gray-400 rounded-lg hover:shadow-2xl hover:border-opacity-0 transform hover:-translate-y-1 ease-in-out transition-all duration-300">
+                        <div class="m-3">
+                            <span
+                                class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= joke.author %></span>
+                            <p
+                                class="font-medium font-mono text-2xl text-white hover:text-red-500 transition-all duration-200">
+                                <%= joke.joke %></p>
+                            <p class="text-gray-400">
+                                <% if (!isValidUrl(joke.source)) { %>
+                                 <span class="hover:underlin hover:text-red-50"><%= joke.source %></span>
+                                <% } else {%> 
+                                <a class="hover:underline hover:text-red-50" href="<%= joke.source %>" target="_blank"
+                                    referrerpolicy="no-referrer" rel="nofollow noreferrer noopener ">Visit
+                                    Source</a>
+                                    <% } %>
+                        </div>
+                    </div>
+                    <% }; %>
+                    <% }); %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="tab w-full overscroll-contain overflow-hidden border-t">
+                <input class="absolute opacity-0" id="tab-multi-two" type="checkbox" name="tabs">
+                <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-two">Quotes</label>
+                <div class="tab-content overscroll-contain overflow-y-auto border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+
+                    <% if (data.quotes.length < 4) {%>
+                        <h1>No New Data</h1>
+                    <% } else { %>
+                    <% data.quotes.forEach(quote => { %>
+                    <% if(quote) {%>
+                    <div
+                        class="card m-2 cursor-pointer shadow-s bg-gray-700 border border-gray-400 rounded-lg hover:shadow-2xl hover:border-opacity-0 transform hover:-translate-y-1 ease-in-out transition-all duration-300">
+                        <div class="m-3">
+                            <span
+                                class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= quote.author %></span>
+                            <p
+                                class="font-medium font-mono text-2xl text-white hover:text-red-500 transition-all duration-200">
+                                <%= quote.quote %></p>
+                            <p class="text-gray-400">
+                                <a class="hover:underline hover:text-red-50" href="<%= quote.source %>" target="_blank"
+                                    referrerpolicy="no-referrer" rel="nofollow noreferrer noopener ">Visit
+                                    Source</a></p>
+                        </div>
+                    </div>
+                    <% } %>
+                    <% }); %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="tab w-full overscroll-contain overflow-hidden border-t">
+                <input class="absolute opacity-0" id="tab-multi-three" type="checkbox" name="tabs">
+                <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-three">Books</label>
+                <div class="tab-content overflow-y-auto border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+                    <% if (data.books.length < 4) {%>
+                        <h1>No New Data</h1>
+                    <% } else { %>
+
+                    <% data.books.forEach(book => { %>
+                    <% if(book) { %>
+                    <div
+                        class="card m-2 cursor-pointer shadow-s bg-gray-700 border border-gray-400 rounded-lg hover:shadow-2xl hover:border-opacity-0 transform hover:-translate-y-1 ease-in-out transition-all duration-300">
+                        <div class="m-3">
+                            <span
+                                class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= book.author %></span>
+                            <p
+                                class="font-medium font-mono text-2xl text-white hover:text-red-500 transition-all duration-200">
+                                <%= book.book_name %></p>
+                            <p class="text-gray-400">
+                                <a class="hover:underline hover:text-red-50" href="<%= book.link %>" target="_blank"
+                                    referrerpolicy="no-referrer" rel="nofollow noreferrer noopener ">Visit
+                                    Source</a></p>
+                        </div>
+                    </div>
+                    <% } %>  
+                    <% }); %>
+                    
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

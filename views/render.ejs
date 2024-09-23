@@ -1,0 +1,41 @@
+<%- include('head') -%>
+    <body class="bg-gray-300">
+        <% var isValidUrl = function (urlString) {
+            try { 
+                return Boolean(new URL(urlString)); 
+            }
+            catch(e){ 
+                return false; 
+            }
+        } %>
+        <div class="container mt-8 mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <% data.forEach(item => { %>
+                <% if(item) {%>
+                <div
+                    class="card m-2 cursor-pointer shadow-s bg-gray-700 border border-gray-400 rounded-lg hover:shadow-2xl hover:border-opacity-0 transform hover:-translate-y-1 ease-in-out transition-all duration-300">
+                    <div class="m-3">
+                        <span
+                            class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= item.author %></span>
+                        <p
+                            class="font-medium font-mono text-2xl text-white hover:text-red-500 transition-all duration-200">
+                            <% if (type === 'jokes') {%> <%= item.joke %> <% } else if (type === "quotes") { %>
+                            <%= item.quote %> <% } else {%> <%= item.book_name %> <% } %></p>
+                        <p class="text-gray-400">
+                            <% if (type !== 'books' && !isValidUrl(item.source)) { %>
+                             <span class="hover:underline hover:text-red-50"><%= item.source %> </span>
+                            <% } else {%>
+                            <a class="hover:underline hover:text-red-50"
+                                href="<% if (type !== 'books') {%> <%= item.source %> <% } else { %> <%= item.link %> <% } %>"
+                                target="_blank" referrerpolicy="no-referrer" rel="nofollow noreferrer noopener ">Visit
+                                Source</a>
+                                <% } %></p>
+                    </div>
+                </div>
+                <% } %>
+                <% }); %>
+            </div>
+        </div>
+    </body>
+
+    </html>
